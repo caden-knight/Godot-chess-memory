@@ -6,3 +6,21 @@
 script = ExtResource("1_xqqdw")
 
 [node name="Squares" type="Node2D" parent="."]
+
+[node name="TargetSquare" type="Label" parent="."]
+offset_right = 234.0
+offset_bottom = 645.0
+theme_override_font_sizes/font_size = 48
+text = "A1"
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="GuessSquare" type="Label" parent="."]
+offset_left = 915.0
+offset_right = 1149.0
+offset_bottom = 645.0
+theme_override_font_sizes/font_size = 48
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
