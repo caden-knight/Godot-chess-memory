@@ -4,20 +4,31 @@ extends Node2D
 @onready var viewport_size := get_viewport_rect().size
 @onready var squares := $Squares
 @onready var target_square_label := $TargetSquare
-
+@onready var guess_square_label := $GuessSquare
+@onready var target_square: String = Singleton.target_squares.pick_random()
 
 var isWhite: bool = true
 var squareX: float = 0.0
 var squareY: float = 0.0
 var direction: int = 1
 var coords = Singleton.coords
-var target_square: String = coords[0].pick_random() + str(coords[1].pick_random())
 
 func _ready():
-	Singleton.target_square = target_square
-	print(Singleton.target_square)
 	setup_board()
-	
+	Singleton.target_square = target_square
+
+# update labels when mouse is clicked
+func _input(event):
+	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
+		target_square_label.text = Singleton.target_square
+		guess_square_label.text = Singleton.player_guess
+		
+		# font color is red if incorrect square is clicked
+		# or green if correct square is clicked
+		var labelColor: Color = Color(0, 255, 0, 1) if Singleton.isCorrect else Color(255, 0, 0, 1)
+		guess_square_label.add_theme_color_override("font_color", labelColor )
+
+# sets up all 64 squares and aligns them to make a chessboard
 func setup_board() -> void:
 	# necessary for the order the squares are instantiated
 	coords[0].reverse()

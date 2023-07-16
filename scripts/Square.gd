@@ -1,26 +1,34 @@
 extends ColorRect
-#
+
+var correctly_guessed_tiles : Array = []
+var coords : Array = Singleton.coords
+
+# checks which square is clicked and if the player clicked the target square
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		var mouse_position = get_global_mouse_position()
 		
 		if get_global_rect().has_point(mouse_position):
+			var target_square: String = Singleton.target_square
+			var target_squares : Array = Singleton.target_squares
 			var player_guess: String = $Label.text
-			var target_square = Singleton.target_square
-			print(player_guess)
+			
+			# update player guess in the singleton
 			Singleton.player_guess = player_guess
 			
-
+			# get out of function if player clicks a square they have already guessed
+			if correctly_guessed_tiles.has(player_guess):
+				return
+			
 			if player_guess == target_square:
 				$Label.visible = true
-				# TODO: remove correct squares from the array
-				print("Nice!")
+				Singleton.isCorrect = true
+				Singleton.target_squares.erase(player_guess) # get rid of correctly guessed squares
 			else:
-				print("FOOL")
-			var coords = Singleton.coords
-			Singleton.target_square = coords[0].pick_random() + str(coords[1].pick_random())
-			print(Singleton.target_square)
-
+				Singleton.isCorrect = false
+			
+			# choose new target square
+			Singleton.target_square = Singleton.target_squares.pick_random()
 
 
 
