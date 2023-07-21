@@ -31,6 +31,7 @@ func _input(event):
 				Singleton.isCorrect = true # sets text color to green
 				correctly_guessed_tiles.append(player_guess) # keep track of squares already clicked on
 				Singleton.target_squares.erase(player_guess) # get rid of correctly guessed squares
+				Singleton.correct_count+=1 # add one to correct count
 			else:
 				Singleton.isCorrect = false # sets text color to red
 				Singleton.player_guess = player_guess # update player guess in the singleton

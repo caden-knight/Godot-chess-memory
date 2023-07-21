@@ -5,6 +5,7 @@ extends Node2D
 @onready var squares := $Squares
 @onready var target_square_label := $TargetSquare
 @onready var guess_square_label := $GuessSquare
+@onready var correct_square_label := $ProgressSquare
 @onready var target_square: String = Singleton.target_squares.pick_random()
 @onready var original_screen_width: float = viewport_size.x
 @onready var original_screen_height: float = viewport_size.y
@@ -18,12 +19,14 @@ var coords = Singleton.coords
 func _ready():
 	setup_board(false, viewport_size.y)
 	Singleton.target_square = target_square
+	correct_square_label.text = "Correct:\n" + str(Singleton.correct_count) + "/64"
 
 # update labels when mouse is clicked
 func _input(event):
 	if event is InputEventMouseButton and event.pressed and event.button_index == MOUSE_BUTTON_LEFT:
 		target_square_label.text = Singleton.target_square
-		guess_square_label.text = Singleton.player_guess
+		guess_square_label.text = "Guess:\n" + Singleton.player_guess
+		correct_square_label.text = "Correct:\n" + str(Singleton.correct_count) + "/64"
 		
 		# font color is red if incorrect square is clicked
 		# or green if correct square is clicked

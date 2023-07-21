@@ -18,10 +18,24 @@ vertical_alignment = 1
 uppercase = true
 
 [node name="GuessSquare" type="Label" parent="."]
-offset_left = 1044.0
-offset_right = 1278.0
+offset_left = 1048.0
+offset_top = -2.0
+offset_right = 1277.0
+offset_bottom = 364.0
+theme_override_font_sizes/font_size = 48
+text = "Guess:"
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+
+[node name="ProgressSquare" type="Label" parent="."]
+offset_left = 1046.0
+offset_top = 348.0
+offset_right = 1280.0
 offset_bottom = 720.0
 theme_override_font_sizes/font_size = 48
+text = "Correct:"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
