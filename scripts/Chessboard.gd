@@ -32,9 +32,6 @@ func _input(event):
 
 # sets up the 8x8 grid and aligns the squares to make a chessboard
 func setup_board(show_square_labels: bool, square_size: float) -> void:
-	
-	print(square_size)
-	
 	# necessary for the order the squares are instantiated
 	coords[0].reverse()
 	

@@ -5,6 +5,11 @@ var target_squares: Array = []
 var target_square: String
 var player_guess: String = ""
 var isCorrect: bool
+enum GAME_MODE {
+	EASY,
+	HARD
+}
+var game_mode: GAME_MODE
 
 func _ready():
 	for file in range(7, -1, -1):
