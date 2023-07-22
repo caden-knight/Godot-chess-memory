@@ -12,16 +12,12 @@ func _input(event):
 			var target_square: String = Singleton.target_square
 			var target_squares : Array = Singleton.target_squares
 			var player_guess: String = $Label.text
-			
-			# set game mode 
-			# TODO: have game mode selected by user at start of game 
-			Singleton.game_mode = Singleton.GAME_MODE.HARD
-			
-			
 
 			# get out of function if player clicks a square they have already guessed
 			if correctly_guessed_tiles.has(player_guess):
 				Singleton.isCorrect = false
+#				Singleton.player_guess = player_guess
+#				$Label.visible = true if Singleton.game_mode == 0 else false
 				return
 
 			# evaluate the player guess against the target square

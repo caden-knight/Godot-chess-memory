@@ -39,3 +39,54 @@ text = "Correct:"
 horizontal_alignment = 1
 vertical_alignment = 1
 uppercase = true
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1280.0
+offset_bottom = 718.0
+
+[node name="EasyBtn" type="Button" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 65.0
+offset_top = 249.0
+offset_right = 572.0
+offset_bottom = 418.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Control/ColorRect/EasyBtn"]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 501.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 36
+text = "EASY MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HardBtn" type="Button" parent="Control/ColorRect"]
+layout_mode = 0
+offset_left = 675.0
+offset_top = 247.0
+offset_right = 1182.0
+offset_bottom = 416.0
+metadata/_edit_group_ = true
+
+[node name="Label" type="Label" parent="Control/ColorRect/HardBtn"]
+layout_mode = 0
+offset_top = 2.0
+offset_right = 506.0
+offset_bottom = 170.0
+theme_override_font_sizes/font_size = 36
+text = "HARD MODE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="Control/ColorRect/EasyBtn" to="." method="_on_easy_btn_pressed"]
+[connection signal="pressed" from="Control/ColorRect/HardBtn" to="." method="_on_hard_btn_pressed"]

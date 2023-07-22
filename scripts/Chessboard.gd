@@ -17,8 +17,7 @@ var direction: int = 1
 var coords = Singleton.coords
 
 func _ready():
-	setup_board(false, viewport_size.y)
-	Singleton.target_square = target_square
+		
 	correct_square_label.text = "Correct:\n" + str(Singleton.correct_count) + "/64"
 
 # update labels when mouse is clicked
@@ -71,3 +70,17 @@ func setup_board(show_square_labels: bool, square_size: float) -> void:
 	# centers the chessboard
 	squares.position.x += offset / 2
 
+
+
+func _on_easy_btn_pressed():
+	setup_board(false, viewport_size.y)
+	Singleton.target_square = target_square
+	$Control.visible = false
+	Singleton.game_mode = Singleton.GAME_MODE.EASY
+
+
+func _on_hard_btn_pressed():
+	setup_board(false, viewport_size.y)
+	Singleton.target_square = target_square
+	$Control.visible = false
+	Singleton.game_mode = Singleton.GAME_MODE.HARD
