@@ -17,7 +17,6 @@ var direction: int = 1
 var coords = Singleton.coords
 
 func _ready():
-		
 	correct_square_label.text = "Correct:\n" + str(Singleton.correct_count) + "/64"
 
 # update labels when mouse is clicked
@@ -29,8 +28,9 @@ func _input(event):
 		
 		# font color is red if incorrect square is clicked
 		# or green if correct square is clicked
-		var labelColor: Color = Color(0, 255, 0, 1) if Singleton.isCorrect else Color(255, 0, 0, 1)
-		guess_square_label.add_theme_color_override("font_color", labelColor )
+		if Singleton.game_mode_set:
+			var labelColor: Color = Color(0, 255, 0, 1) if Singleton.isCorrect else Color(255, 0, 0, 1)
+			guess_square_label.add_theme_color_override("font_color", labelColor )
 
 # sets up the 8x8 grid and aligns the squares to make a chessboard
 func setup_board(show_square_labels: bool, square_size: float) -> void:
@@ -73,14 +73,16 @@ func setup_board(show_square_labels: bool, square_size: float) -> void:
 
 
 func _on_easy_btn_pressed():
-	setup_board(false, viewport_size.y)
-	Singleton.target_square = target_square
 	$Control.visible = false
 	Singleton.game_mode = Singleton.GAME_MODE.EASY
+	setup_board(false, viewport_size.y)
+	Singleton.target_square = target_square
+	Singleton.game_mode_set = true
 
 
 func _on_hard_btn_pressed():
-	setup_board(false, viewport_size.y)
-	Singleton.target_square = target_square
 	$Control.visible = false
 	Singleton.game_mode = Singleton.GAME_MODE.HARD
+	setup_board(false, viewport_size.y)
+	Singleton.target_square = target_square
+	Singleton.game_mode_set = true

@@ -6,6 +6,7 @@ var target_square: String
 var player_guess: String = ""
 var isCorrect: bool
 var correct_count: int = 0
+var game_mode_set: bool = false
 enum GAME_MODE {
 	EASY,
 	HARD

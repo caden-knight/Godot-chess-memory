@@ -16,8 +16,8 @@ func _input(event):
 			# get out of function if player clicks a square they have already guessed
 			if correctly_guessed_tiles.has(player_guess):
 				Singleton.isCorrect = false
-#				Singleton.player_guess = player_guess
-#				$Label.visible = true if Singleton.game_mode == 0 else false
+				Singleton.player_guess = player_guess
+				$Label.visible = true if Singleton.game_mode == 0 else false
 				return
 
 			# evaluate the player guess against the target square
