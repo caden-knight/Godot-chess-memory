@@ -17,6 +17,7 @@ func _input(event):
 			if correctly_guessed_tiles.has(player_guess):
 				Singleton.isCorrect = false
 				Singleton.player_guess = player_guess
+				Singleton.target_square = Singleton.target_squares.pick_random()
 				$Label.visible = true if Singleton.game_mode == 0 else false
 				return
 
